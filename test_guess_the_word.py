@@ -59,3 +59,13 @@ def test_duplicate_guess():
     assert result is False
     assert guessed_letters == {"p"}
 
+def test_letters_any_order():
+    # Verify correct letters can be guessed in any order.
+    guessed_letters = set()
+
+    process_guess("apple", guessed_letters, "e")
+    process_guess("apple", guessed_letters, "a")
+    process_guess("apple", guessed_letters, "p")
+
+    assert display_word("apple", guessed_letters) == "a p p _ e"
+    
